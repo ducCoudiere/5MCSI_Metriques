@@ -11,9 +11,13 @@ app = Flask(__name__)
 def hello_world():
     return render_template('hello.html')
 
+# @app.route("/contact/")
+# def MaPremiereAPI():
+    # return "<h2>Ma page de contact</h2>"
+
 @app.route("/contact/")
 def MaPremiereAPI():
-    return "<h2>Ma page de contact</h2>"
+    return render_template("formulaire.html")
 
 @app.route('/tawarano/')
 def meteo():
