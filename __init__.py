@@ -15,6 +15,7 @@ def hello_world():
 # def MaPremiereAPI():
     # return "<h2>Ma page de contact</h2>"
 
+
 @app.route("/contact/")
 def MaPremiereAPI():
     return render_template("formulaire.html")
@@ -30,6 +31,10 @@ def meteo():
         temp_day_value = list_element.get('main', {}).get('temp') - 273.15 # Conversion de Kelvin en °c 
         results.append({'Jour': dt_value, 'temp': temp_day_value})
     return jsonify(results=results) 
+
+@app.route("/commits/")
+ def NbCommits():
+  return "<h2>Ma page de contact</h2>"
 
 @app.route('/extract-minutes/<date_string>')
 def extract_minutes(date_string):
