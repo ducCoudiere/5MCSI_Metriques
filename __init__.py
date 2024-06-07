@@ -36,7 +36,7 @@ def meteo():
 
 @app.route('/commits/data')
 def get_commits_data():
-    url = 'https://api.github.com/repos/OliveurTwistAgain/Flask_Meteo/commits'
+    url = 'https://api.github.com/repos/ducCoudiere/Flask_Meteo/commits'
     response = urlopen(url)
     raw_content = response.read()
     json_content = json.loads(raw_content.decode('utf-8'))
