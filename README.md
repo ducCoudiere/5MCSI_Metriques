@@ -1,4 +1,4 @@
- # Astore - Ecommerce website
+ # DSstore - Ecommerce website
 
 It is clone of Astore Ecommerce website with all basic functionalities of Ecommerce website.
 
