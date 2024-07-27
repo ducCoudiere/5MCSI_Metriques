@@ -1,162 +1,346 @@
-<!doctype html>
-<title>Evaluation</title>
-<h1>Bienvenue sur votre projet Métriques</h1>
-<h2>Ceci est le projet de : Duc COUDIERE</h2>
-<p>Si vous avez mis en ligne votre solution et si cette page d'accueil s'affiche dans votre navigateur alors <b>vous avez déjà gagné 4 points</b> sur votre note d'évaluation.</p>
-<p>Notions acquises lors de cette étape : Vous avez lors cette première étape apris à créer votre hébergement en ligne sur Alwaydata, installer une application, Forker un projet GitHUB et créer des Secrets qui seront utilisés lors de vos Commits pour mettre à jour votre site en ligne</p>
-<p>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - </p>
-<h3>Exercice 1 : Personnaliser votre page d'accueil (1 point)</h3>
-<p>Modifier le fichier hello.html de votre projet GitHUB afin de préciser votre Prénom et Nom sur la page d'accueil de votre site (Modification de la ligne 4 du fichier hello.html)</p>
-<p>Notion acquises lors de cet exercice : Vous avez pris connaissance de votre environnement GitHUB avec ses fichiers, ses répertoires et ses "Commits" pour enregistrer vos modifications</p>
-<p>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - </p>
-<h3>Exercice 2 : Création d'une nouvelle route (2 points)</h3>
-<p>Objectif : Savoir créer des routes (c'est à dire la création d'une nouvelle API)</p>
-L'exercice consiste à créer une nouvelle route accèssible depuis le chemin "/contact/" de votre site et qui affichera "Ma page de contact" dans le navigateur de l'internaute.
-L'internaute saisira l'adresse suivante dans son navigateur : <b>https://{Votre URL}/contact/</b> et obtiendra donc le résultat "Ma page de contact". Vous allez pour cela, depuis GitHUB, <b>ajouter</b> le code suivant dans votre fichier <b></b>__init__.py</b> qui est à la racine de votre Repository précédemment créé :
-<pre><code><xmp>
-@app.route("/contact/")
-def MaPremiereAPI():
-    return "<h2>Ma page de contact</h2>"
-</xmp></code></pre>
-Remarque importante : Ce code est à ajouter après la ligne "app = Flask(__name__)" qui est le début de votre programme et avant le bloc "if __name__ == "__main__" à la fin du fichier.
-<b>Attention l'indentation est très importante en Python.</b>
-</p>
-<p>Notion acquises lors de cet exercice : Vous avez appris lors de cet exercice à créer des API (c'est à dire des routes) dans une application Python. Vous pouvez créer autant d'API (de routes) que vous le souhaitez dans votre application Python.</p>
-<p>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - </p>
-<h3>Exercice 3 : Les données d'une API (3 points)</h3>
-<p>Objectif : Utiliser les données issues d'une API externes pour créer une route adaptée à vos besoins.</p>
-<p>Pour commencer, copier l'URL ci-dessous dans un nouvel onglet de votre navigateur et observez le résultat :</p>
-https://samples.openweathermap.org/data/2.5/forecast?lat=0&lon=0&appid=xxx</p>
-<p>Il s'agit ici de quelques relévés météorologique de la ville Tawarano réalisées au cours de l'année 2017.
-Vous observerez que nous utilisons une API gratuite fourni par Openweathermap. C'est typiquement le format que vous trouverez dans le cadre des services de métriques (Données issues de serveurs, de réseaux, de stockages, etc..).</p>
-<p>Les API fournissent en général des données au format JSON. JSON est un format structuré avec des étiquettes (également appelé des keys) et ont pour objectif de fournir des données "brut".<br/>
-<b>Prenez ici quelques minutes pour "comprendre" la structure de ces données JSON et identifer les clés et les données.</b></p>
-<p>- - - - - </p>
-<p>Ce qui nous intéresse à présent, c'est extraire la valeur de [dt] (c'est à dire les dates) et les valeurs stockées dans la clé [main][temp], c'est à dire les températures du jour.</p>
-<p>A noter que les dates ici sont au format "Timestamp". C'est à dire que la donnée est le nombre de secondes depuis le 1 janvier 2000 (un légacy d'UNIX). Les températures sont stockées au format Kelvin (il faudra donc les convertir en °C).</p> 
-<p>Vous allez à présent créer une nouvelle route "/tawarano/" dans votre application Python pour filtrer l'API d'Openweathermap et extraire uniquement les dates et température du jour. Ci-dessous la route à ajouter dans votre application.
-<pre><code><xmp>
-@app.route('/tawarano/')
-def meteo():
-    response = urlopen('https://samples.openweathermap.org/data/2.5/forecast?lat=0&lon=0&appid=xxx')
-    raw_content = response.read()
-    json_content = json.loads(raw_content.decode('utf-8'))
-    results = []
-    for list_element in json_content.get('list', []):
-        dt_value = list_element.get('dt')
-        temp_day_value = list_element.get('main', {}).get('temp') - 273.15 # Conversion de Kelvin en °c 
-        results.append({'Jour': dt_value, 'temp': temp_day_value})
-    return jsonify(results=results)
-</xmp></code></pre></p>
-<p>Testez cette nouvelle route dans votre navigateur et observer le résultat.</p>    
-<p>- - - - - </p>
-<b>Exercice 3 Bis : Les fichiers HTML</b>
-<p>Objectif : Comprendre la philosophie des Frameworks</p>
-<p>Le Framework Flask nous impose de déposer tous les fichiers HTML dans le répertoire templates dédié à cet effet.
-Depuis GitHUB, nous allons donc créer et déposer dans le répertoire "templates" une page HTML qui sera accessible depuis la route suivante : https://{VOTRE_URL}/rapport/
-</p>
-<p>Etape 1.1 : Création du fichier graphique.html
-Dans votre répertoire templates, créez un fichier graphique.html contenant le code suivant :
-<pre><code><xmp>
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Graphique</title>
- </head>  
-<body>
-    <h2>Mon Graphique</h2>
-</body>
-</html>
-</xmp></code></pre></p>
-<p>Etape 1.2 : Création d'une nouvelle route
-Créez à présent une nouvelle route afin de pouvoir consulter votre fichier HTML depuis votre site en ligne.
-Pour cela, ajouter le code ci-dessous dans votre fichier __init__.py :
-<pre><code><xmp>
-@app.route("/rapport/")
-def mongraphique():
-    return render_template("graphique.html")
-</xmp></code></pre></p>
-<p>Notions acquises dans cet exercice : Nous avons vu lors de cet exercice comment créer et où déposer les fichiers HTML lorsque l'on utise le Framework Flask.
-Nous avons également découvert que les Framework (cadre de travail) nous imposent une structure de travail où chaque élément doit être à sa place.
-</p>
-<p>- - - - - </p>
-<b>Exercice 3 Ter : Transfert de données</b>
-<p>Mettons à présent ces valeurs sous la forme d'un graphique qui sera pour l'utilisateur bien plus agréable et facile à lire.
-Pour cela, nous devons utiliser les données de notre nouvelle API /rapport/ et les injecter dans notre fichier graphique.html.
-Nous allons utiliser une bibliothèque open source fournie par Google pour créer ce graphique.</p>
-<p>Modifier votre précédent fichier graphique.html dans GitHUB et remplacer son code par celui-ci :
-<pre><code><xmp>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>Metrique</title>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+    <link rel="icon" href="images/redWhiteYinYang.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      type="image/png"
+      sizes="32x32"
+      rel="icon"
+      href="../images/icons8-galaxy-store-32.png"
+    />
+    <title>Astore - Your Ultimate eCommerce Store</title>
   </head>
-  <body>
-    <div id="chart_div"></div>
+  <body
+    data-aos-easing="ease"
+    data-aos-duration="400"
+    data-aos-delay="0"
+    class="body__move"
+  >
+    <script
+      src="https://kit.fontawesome.com/a076d05399.js"
+      crossorigin="anonymous"
+    ></script>
     <script>
-      google.charts.load('current', { packages: ['corechart'] });
-      google.charts.setOnLoadCallback(drawBackgroundColor);
-     function drawBackgroundColor() {
-    function drawChart(data) {
-    // Convertir les données récupérées en un tableau utilisable par Google Charts
-    var dataTable = new google.visualization.DataTable();
-    dataTable.addColumn('string', 'Date');
-    dataTable.addColumn('number', 'Valeur');
-    data.results.forEach(entry => {
-      var date = new Date(entry.Jour * 1000);
-      dataTable.addRow([date.toLocaleDateString(), entry.temp]);
-    });
-    // Configurer les options du graphique en ligne
-    var options = {
-      title: 'Évolution des températures de la ville de Tawarano',
-      curveType: 'function',
-      legend: { position: 'bottom' }
-    };
-    var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-    chart.draw(dataTable, options);
-  }
-  // Récupération de données depuis notre API /tawarano/
-  fetch('/tawarano/')
-    .then(response => response.json())
-    .then(data => {
-      drawChart(data);
-    })
-}
+      AOS.init();
     </script>
+
+    <div class="topnav__main">
+      <a href="#" class="fa fa-facebook"></a>
+      <a href="#" class="fa fa-twitter"></a>
+      <a href="#" class="fa fa-instagram"></a>
+      <span class="call__number">Call: <a href="">03073591744</a></span>
+    </div>
+
+    <!-- nav -->
+    <div class="main__nav">
+      <!-- <svg class="icon__toggler" onclick="Change()">
+        <use href="images/sprite.svg#menu"></use>
+      </svg> -->
+      <i
+        class="fa fa-align-center icon__toggler"
+        style="font-size: 2rem"
+        onclick="Change()"
+      ></i>
+      <ul>
+        <li class="product" style="border: 0px solid red">
+          <a href=""
+            >Products<i
+              class="fa fa-solid fa-angle-down"
+              style="color: black"
+            ></i
+          ></a>
+        </li>
+        <div
+          class="product__submenu"
+          onmouseover="display()"
+          onmouseleave="hide()"
+        >
+          <a href="#" onclick="getValue('cloth')">clothing line</a>
+          <a href="#" onclick="getValue('decoration')">Decoration</a>
+          <a href="#abc" onclick="getValue('bags')">Bags</a>
+          <a href="#abc" onclick="getValue('Jewellery')">Jewellory</a>
+          <a href="#abc" onclick="getValue('skincare')">skincare</a>
+          <a href="#abc" onclick="getValue('shoes')">Footwear</a>
+          <a href="#abc" onclick="getValue('Perfume')">Perfume</a>
+          <a href="#abc" onclick="getValue('lighting')">lighting</a>
+        </div>
+        <li><a href="">Customer Reviews</a></li>
+        <li><a href="">About</a></li>
+      </ul>
+
+      <a href="index.html" class="regular__logo" style="display: block">
+        <div class="regular__logo">
+          <img src="../images/logo.avif" />
+        </div>
+      </a>
+      <div class="icons">
+        <i class="fa fa-search icon__item" onclick="showSearchBar()"></i>
+        <i class="fa fa-user icon__item"></i>
+        <i
+          class="fa fa-shopping-cart icon__item"
+          id="cart-button"
+          onclick="toggleCart()"
+        ></i>
+      </div>
+    </div>
+    <!-- nav end-->
+    <!-- dopdown for products -->
+    <div class="productDropdown">
+      <a href="bags.html">Bags</a>
+      <a href="iphones.html">iphones</a>
+    </div>
+
+    <!-- mobile nav -->
+
+    <div class="mobile__nav">
+      <div class="nav__header">
+        Menu
+        <i class="fa fa-close" onclick="Change1()" style="float: right"></i>
+      </div>
+      <div>NEW ARRIVAL</div>
+      <div>
+        clothing line<i class="fa fa-plus plus__icon" style="float: right"></i>
+      </div>
+      <div>Deals</div>
+      <div>Bags<i class="fa fa-plus plus__icon" style="float: right"></i></div>
+      <div>
+        Jewellory<i class="fa fa-plus plus__icon" style="float: right"></i>
+      </div>
+      <div>
+        Accessories<i class="fa fa-plus plus__icon" style="float: right"></i>
+      </div>
+      <div>FootWear</div>
+      <div>Clearance Sell</div>
+      <div>About US</div>
+      <div>Login/Register</div>
+    </div>
+
+    <!-- searchBar -->
+
+    <!-- **************************************** 
+*******************Main Page content********** 
+*************************************************-->
+
+    <section class="hero-image" data-aos="fade-up" data-aos-duration="1500">
+      <img src="../images/homepage/hero-image.webp" alt="" />
+    </section>
+    <div id="includedContent"></div>
+    <section
+      class="show-categories"
+      data-aos="zoom-out"
+      data-aos-duration="2000"
+    >
+      <div class="cat" class="cat" onclick="getValue('decoration')">
+        <a href="buttonSlider.html">
+          <img src="../images/homepage/sale.webp" alt="" class="cat-image" />
+        </a>
+      </div>
+      <div
+        class="cat"
+        onclick="getValue('Shoes')"
+        data-aos="zoom-out"
+        data-aos-duration="2000"
+      >
+        <a href="buttonSlider.html">
+          <img
+            src="../images/homepage/footwear.webp"
+            alt=""
+            class="cat-image"
+          />
+        </a>
+      </div>
+      <div
+        class="cat"
+        class="cat"
+        onclick="getValue('sunglasses')"
+        data-aos="zoom-out"
+        data-aos-duration="2000"
+      >
+        <a href="buttonSlider.html">
+          <img src="../images/homepage/glasses.webp" alt="" class="cat-image" />
+        </a>
+      </div>
+      <div
+        class="cat"
+        onclick="getValue('tops')"
+        data-aos="zoom-out"
+        data-aos-duration="2000"
+      >
+        <a href="buttonSlider.html">
+          <img src="../images/homepage/gloves.webp" alt="" class="cat-image" />
+        </a>
+      </div>
+      <div
+        class="cat"
+        onclick="getValue('womens-bags')"
+        data-aos="zoom-out"
+        data-aos-duration="2000"
+      >
+        <a href="buttonSlider.html">
+          <img
+            src="../images/homepage/handbags.webp"
+            alt=""
+            class="cat-image"
+          />
+        </a>
+      </div>
+      <div
+        class="cat"
+        onclick="getValue('Jewellery')"
+        data-aos="zoom-out"
+        data-aos-duration="2000"
+      >
+        <a href="buttonSlider.html">
+          <img
+            src="../images/homepage/jewellory.webp"
+            alt=""
+            class="cat-image"
+          />
+        </a>
+      </div>
+
+      <div
+        class="cat"
+        onclick="getValue('Perfumes')"
+        data-aos="zoom-out"
+        data-aos-duration="2000"
+      >
+        <a href="buttonSlider.html">
+          <img href="#abc" src="../images/homepage/perfumes.webp" alt="" />
+        </a>
+      </div>
+
+      <div
+        class="cat"
+        onclick="getValue('skincare')"
+        data-aos="zoom-out"
+        data-aos-duration="2000"
+      >
+        <a href="buttonSlider.html">
+          <img src="../images/homepage/premium.webp" alt="" class="cat-image" />
+        </a>
+      </div>
+      <div
+        class="cat"
+        onclick="getValue('Shirts')"
+        data-aos="zoom-out"
+        data-aos-duration="2000"
+      >
+        <a href="buttonSlider.html">
+          <img src="../images/homepage/cloths.webp" alt="" class="cat-image" />
+        </a>
+      </div>
+    </section>
+
+    <!-- products section -->
+    <section id="search-area">
+      <div class="search-row">
+        <input
+          type="text"
+          class="search-input"
+          placeholder="Search products..."
+        />
+        <button class="search-button">Search</button>
+        <button
+          class="search-button"
+          style="margin-top: 2px"
+          onclick="hideSearchBar()"
+        >
+          Close
+        </button>
+      </div>
+      <div class="search-results"></div>
+    </section>
+    <div id="cart" class="cart-hidden">
+      <div class="cart-row">
+        <h2 style="text-align: center">Your Cart</h2>
+        <i
+          class="fa fa-close icon__item"
+          id="cart-button"
+          onclick="toggleCart()"
+        ></i>
+      </div>
+      <!-- Cart section -->
+      <ul id="cart-items"></ul>
+      <h3 style="margin: auto; padding: 10px 0px" id="cart-total">Total: $0</h3>
+      <button id="clear-cart" onclick="clearCart()">Clear Cart</button>
+    </div>
+    <!-- Footer section -->
+    <footer class="section-p1">
+      <div class="col">
+        <img class="logo" src="../images/logo.png" alt="" />
+        <h4>Contact</h4>
+        <p><strong>Address:</strong>Village Dighpur near Gidr banglow Ghotki</p>
+        <p><strong>Mobile:</strong>0307 3591744</p>
+        <p><strong>Hours:</strong>10:00 - 18:00, Man - Sat</p>
+        <div class="follow">
+          <h4>Follow Us</h4>
+          <div class="icon">
+            <i class="fa fa-facebook"></i>
+            <i class="fa fa-twitter"></i>
+            <i class="fa fa-instagram"></i>
+            <i class="fa fa-pinterest"></i>
+            <i class="fa fa-youtube"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <h4>About Us</h4>
+        <a href="#abc">About us</a>
+        <a href="#abc">Delievery Information</a>
+        <a href="#abc">Privacy Policy</a>
+        <a href="#abc">Terms & Conditions</a>
+        <a href="#abc">Contact us</a>
+      </div>
+
+      <div class="col">
+        <h4>My Account</h4>
+        <a href="#abc">Sign In</a>
+        <a href="#abc">View Cart</a>
+        <a href="#abc">My Wishlist</a>
+        <a href="#abc">Track My Order</a>
+        <a href="#abc">Help</a>
+      </div>
+      <div class="col install">
+        <h4>Install App</h4>
+        <p>From PlayStore or Google Playstore</p>
+        <div class="row">
+          <img src="../images/pay/app.jpg" alt="" />
+          <img src="../images/pay/play.jpg" alt="" />
+        </div>
+        <p>Secured and Protected. State Bank Authorized</p>
+        <img src="../images/pay/pay.png" alt="" />
+      </div>
+      <div class="copyright">
+        <p>@ducsabrine, From CNAM</p>
+      </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+    <!-- <script src="script.js"></script> -->
   </body>
 </html>
-</xmp></code></pre></p>
-<p>Notions acquises lors de cette séquence : Bravo ! Vous avez à présent en main tous les outils qui vous permettront de créer vos propres tableaux de bord.
-Vous avez appris à récupérer des données issues d'une API externe (des données issues d'un serveur externe), les adapter à vos besoins et afin créer vos propres graphiques.</p>
-<p>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - </p>
-<h3>Exercice 4 : Créer son histogramme (3 points)</h3>
-<p>Objectif : Devenir autonome dans la création de ses graphiques.</p>
-<p>A l'aide des graphiques disponibles dans la galerie open source de Google disponibles à l'adresse suivante</p> 
-<p>https://developers-dot-devsite-v2-prod.appspot.com/chart/interactive/docs/gallery?hl=fr
-créer un nouveau graphique à colonnes (un histogramme) afin de présenter l'évolution des températures de la ville de Tawarano.
-Ce nouveau graphique sera accessible sur votre site en ligne via le chemin suivant : https://{Votre URL}/histogramme/</p>
-<p>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - </p>
-<h3>Exercice 5 : Customisation de votre page de contact (3 points) </h3>
-<p>Objectif : Faites preuve de créativité...</p>
-<p>Reprenez l'exercice 2 et faites pointer à présent votre route "/contact/" vers un fichier HTML un peu plus élaboré (faites preuve de créativité). Dans ce formulaire l'utilisateur sera en mesure de pouvoir laisser son nom, son prénom et un message à votre attention.</p>
-<p>L'enregistrement des données ne sera pas opérationnel dans le cadre de cet exercice. Il s'agit juste ici de vous évaluer sur l'aspect esthétique de votre création. Les 3 points de cet exercice vous seront donc attribués sur la base du Design de votre œuvre (à la convenance de l'examinateur)</p>
-<p>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - </p>
-<h3>Exercice 6 : Combien de Commits pour ce projet ?  (4 points) </h3>
-<p>Objectif : Autonomie totale ...</p>
-<p><b>Toutes les solutions informatiques proposent aujourd'hui des API</b>. GitHUB lui-même propose des API pour toutes sortes de mesures</p>
-<p>Charge à vous de savoir les extraire et les adapter à vos besoins. Dans cet exercice, vous allez créer un graphique qui mesurera la quantité de Commits que vous avez effectués (minute par minute) pour réaliser ce projet</p>
-Ce nouveau graphique sera accessible sur votre site en ligne via le chemin suivant : https://{Votre URL}/commits/</p>
-<p>Indice N°1 : Voici l'API utilisée pour extraire l'activité du repository qui est à l'origine de votre projet (celui que vous avez Forker en début de séance)</p>
-<p>https://api.github.com/repos/OpenRSI/5MCSI_Metriques/commits</p>
-<p>Indice N°2 : Les données qui nous intéressent ici sont stockées dans la clé suivante : [Commit][author][date]</p>
-<p>Indice N°3 : Voici une route qui permet d'extraire les minutes d'une information formatée comme suit : "2024-02-11T11:57:27Z" </p>
-<pre><code><xmp>
-@app.route('/extract-minutes/<date_string>')
-def extract_minutes(date_string):
-        date_object = datetime.strptime(date_string, '%Y-%m-%dT%H:%M:%SZ')
-        minutes = date_object.minute
-        return jsonify({'minutes': minutes})
-</xmp></code></pre></p>
-<p>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - </p>
-<h2>FIN DU PROJET</h2>
