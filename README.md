@@ -1,4 +1,4 @@
- # DSstore - Ecommerce website
+# DSstore - Ecommerce website
 
 It is clone of Astore Ecommerce website with all basic functionalities of Ecommerce website.
 
@@ -23,14 +23,14 @@ It is clone of Astore Ecommerce website with all basic functionalities of Ecomme
 https://ducCoudiere.github.io/Ecommerce/html/index.html
 
 ## Video
-[![Video Demo](https://drive.google.com/thumbnail?id=15bfnc0NbPXK9Y_X3okvU7Ym8zjIO-Us-)](https://drive.google.com/uc?id=15bfnc0NbPXK9Y_X3okvU7Ym8zjIO-Us-)
+## [![Video Demo](https://drive.google.com/thumbnail?id=15bfnc0NbPXK9Y_X3okvU7Ym8zjIO-Us-)](https://drive.google.com/uc?id=15bfnc0NbPXK9Y_X3okvU7Ym8zjIO-Us-)
 
 
 
 ## Installation
 
-1. Clone the repository: `git clone https://github.com/SajidBhatti786/Ecommerce-website.git`
-2. Open the project directory: `cd Ecommerce-website`
+1. Clone the repository: `git clone https://github.com/ducCoudiere/Ecommerce.git`
+2. Open the project directory: `cd Ecommerce`
 3. Open the `index.html` file in your preferred web browser.
 
 ## Usage
@@ -43,9 +43,9 @@ https://ducCoudiere.github.io/Ecommerce/html/index.html
 
 If you want to contribute or colloborate or want to seek any services, guidence or help connect me through any channel.
 ## Connect with me
-[![Facebook](https://img.shields.io/badge/Facebook-Follow-blue)](https://www.facebook.com/profile.php?id=100026991042689&mibextid=ZbWKwL)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue)](https://www.linkedin.com/in/sajid-bhatti-b2436b24a)
-[![GitHub](https://img.shields.io/github/followers/YOUR_GITHUB_USERNAME?style=social)](https://github.com/SajidBhatti786)
+[![Facebook](https://img.shields.io/badge/Facebook-Follow-blue)](https://www.facebook.com/ducnm.globaleis/)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue)](https://www.linkedin.com/in/coudière-nguyen-thi-minh-duc-28187789/)
+[![GitHub](https://img.shields.io/github/followers/YOUR_GITHUB_USERNAME?style=social)](https://github.com/ducCoudiere)
 
 ## Keywords:
 - Ecommerce website
