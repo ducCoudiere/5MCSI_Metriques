@@ -2,7 +2,7 @@ console.log("cart.js");
 var urlParams = new URLSearchParams(window.location.search);
 var productId = urlParams.get('productId');
 document.addEventListener('DOMContentLoaded', function() {
- myCartMethod();
+ myCartMethod(); 
 });
 
 function myCartMethod() {
