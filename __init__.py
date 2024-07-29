@@ -20,9 +20,9 @@ def hello_world():
 #def MaPremiereAPI():
  #return render_template("formulaire.html")
 
-#@app.route("/booking/")
-#def MaPremiereAPI():
- #return render_template("booking.html")
+@app.route("/booking/")
+def MaPremiereAPI():
+ return render_template("booking.html")
 
 @app.route("/contact/")
 def MaPremiereAPI():
