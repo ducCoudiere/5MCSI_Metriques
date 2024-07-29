@@ -22,7 +22,7 @@ def hello_world():
 
 @app.route("/booking/")
 def MaPremiereAPI():
- return render_template("booking.html")
+    return render_template("booking.html")
 
 @app.route("/contact/")
 def MaPremiereAPI():
