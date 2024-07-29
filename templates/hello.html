@@ -1,346 +1,348 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../css/style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
-    />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-
-    <link rel="icon" href="images/redWhiteYinYang.png" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-    <link
-      type="image/png"
-      sizes="32x32"
-      rel="icon"
-      href="../images/icons8-galaxy-store-32.png"
-    />
-    <title>DSstore - Your eCommerce Store</title>
-  </head>
-  <body
-    data-aos-easing="ease"
-    data-aos-duration="400"
-    data-aos-delay="0"
-    class="body__move"
-  >
-    <script
-      src="https://kit.fontawesome.com/a076d05399.js"
-      crossorigin="anonymous"
-    ></script>
-    <script>
-      AOS.init();
-    </script>
-
-    <div class="topnav__main">
-      <a href="#" class="fa fa-facebook"></a>
-      <a href="#" class="fa fa-twitter"></a>
-      <a href="#" class="fa fa-instagram"></a>
-      <span class="call__number">Call: <a href="">0123456789</a></span>
-    </div>
-
-    <!-- nav -->
-    <div class="main__nav">
-      <!-- <svg class="icon__toggler" onclick="Change()">
-        <use href="images/sprite.svg#menu"></use>
-      </svg> -->
-      <i
-        class="fa fa-align-center icon__toggler"
-        style="font-size: 2rem"
-        onclick="Change()"
-      ></i>
-      <ul>
-        <li class="product" style="border: 0px solid red">
-          <a href=""
-            >Products<i
-              class="fa fa-solid fa-angle-down"
-              style="color: black"
-            ></i
-          ></a>
-        </li>
-        <div
-          class="product__submenu"
-          onmouseover="display()"
-          onmouseleave="hide()"
-        >
-          <a href="#" onclick="getValue('cloth')">clothing line</a>
-          <a href="#" onclick="getValue('decoration')">Decoration</a>
-          <a href="#abc" onclick="getValue('bags')">Bags</a>
-          <a href="#abc" onclick="getValue('Jewellery')">Jewellory</a>
-          <a href="#abc" onclick="getValue('skincare')">skincare</a>
-          <a href="#abc" onclick="getValue('shoes')">Footwear</a>
-          <a href="#abc" onclick="getValue('Perfume')">Perfume</a>
-          <a href="#abc" onclick="getValue('lighting')">lighting</a>
-        </div>
-        <li><a href="">Customer Reviews</a></li>
-        <li><a href="">About</a></li>
-      </ul>
-
-      <a href="index.html" class="regular__logo" style="display: block">
-        <div class="regular__logo">
-          <img src="../images/logo.avif" />
-        </div>
-      </a>
-      <div class="icons">
-        <i class="fa fa-search icon__item" onclick="showSearchBar()"></i>
-        <i class="fa fa-user icon__item"></i>
-        <i
-          class="fa fa-shopping-cart icon__item"
-          id="cart-button"
-          onclick="toggleCart()"
-        ></i>
-      </div>
-    </div>
-    <!-- nav end-->
-    <!-- dopdown for products -->
-    <div class="productDropdown">
-      <a href="bags.html">Bags</a>
-      <a href="iphones.html">iphones</a>
-    </div>
-
-    <!-- mobile nav -->
-
-    <div class="mobile__nav">
-      <div class="nav__header">
-        Menu
-        <i class="fa fa-close" onclick="Change1()" style="float: right"></i>
-      </div>
-      <div>NEW ARRIVAL</div>
-      <div>
-        clothing line<i class="fa fa-plus plus__icon" style="float: right"></i>
-      </div>
-      <div>Deals</div>
-      <div>Bags<i class="fa fa-plus plus__icon" style="float: right"></i></div>
-      <div>
-        Jewellory<i class="fa fa-plus plus__icon" style="float: right"></i>
-      </div>
-      <div>
-        Accessories<i class="fa fa-plus plus__icon" style="float: right"></i>
-      </div>
-      <div>FootWear</div>
-      <div>Clearance Sell</div>
-      <div>About US</div>
-      <div>Login/Register</div>
-    </div>
-
-    <!-- searchBar -->
-
-    <!-- **************************************** 
-*******************Main Page content********** 
-*************************************************-->
-
-    <section class="hero-image" data-aos="fade-up" data-aos-duration="1500">
-      <img src="../images/homepage/hero-image.webp" alt="" />
-    </section>
-    <div id="includedContent"></div>
-    <section
-      class="show-categories"
-      data-aos="zoom-out"
-      data-aos-duration="2000"
-    >
-      <div class="cat" class="cat" onclick="getValue('decoration')">
-        <a href="buttonSlider.html">
-          <img src="../images/homepage/sale.webp" alt="" class="cat-image" />
-        </a>
-      </div>
-      <div
-        class="cat"
-        onclick="getValue('Shoes')"
-        data-aos="zoom-out"
-        data-aos-duration="2000"
-      >
-        <a href="buttonSlider.html">
-          <img
-            src="../images/homepage/footwear.webp"
-            alt=""
-            class="cat-image"
-          />
-        </a>
-      </div>
-      <div
-        class="cat"
-        class="cat"
-        onclick="getValue('sunglasses')"
-        data-aos="zoom-out"
-        data-aos-duration="2000"
-      >
-        <a href="buttonSlider.html">
-          <img src="../images/homepage/glasses.webp" alt="" class="cat-image" />
-        </a>
-      </div>
-      <div
-        class="cat"
-        onclick="getValue('tops')"
-        data-aos="zoom-out"
-        data-aos-duration="2000"
-      >
-        <a href="buttonSlider.html">
-          <img src="../images/homepage/gloves.webp" alt="" class="cat-image" />
-        </a>
-      </div>
-      <div
-        class="cat"
-        onclick="getValue('womens-bags')"
-        data-aos="zoom-out"
-        data-aos-duration="2000"
-      >
-        <a href="buttonSlider.html">
-          <img
-            src="../images/homepage/handbags.webp"
-            alt=""
-            class="cat-image"
-          />
-        </a>
-      </div>
-      <div
-        class="cat"
-        onclick="getValue('Jewellery')"
-        data-aos="zoom-out"
-        data-aos-duration="2000"
-      >
-        <a href="buttonSlider.html">
-          <img
-            src="../images/homepage/jewellory.webp"
-            alt=""
-            class="cat-image"
-          />
-        </a>
-      </div>
-
-      <div
-        class="cat"
-        onclick="getValue('Perfumes')"
-        data-aos="zoom-out"
-        data-aos-duration="2000"
-      >
-        <a href="buttonSlider.html">
-          <img href="#abc" src="../images/homepage/perfumes.webp" alt="" />
-        </a>
-      </div>
-
-      <div
-        class="cat"
-        onclick="getValue('skincare')"
-        data-aos="zoom-out"
-        data-aos-duration="2000"
-      >
-        <a href="buttonSlider.html">
-          <img src="../images/homepage/premium.webp" alt="" class="cat-image" />
-        </a>
-      </div>
-      <div
-        class="cat"
-        onclick="getValue('Shirts')"
-        data-aos="zoom-out"
-        data-aos-duration="2000"
-      >
-        <a href="buttonSlider.html">
-          <img src="../images/homepage/cloths.webp" alt="" class="cat-image" />
-        </a>
-      </div>
-    </section>
-
-    <!-- products section -->
-    <section id="search-area">
-      <div class="search-row">
-        <input
-          type="text"
-          class="search-input"
-          placeholder="Search products..."
-        />
-        <button class="search-button">Search</button>
-        <button
-          class="search-button"
-          style="margin-top: 2px"
-          onclick="hideSearchBar()"
-        >
-          Close
-        </button>
-      </div>
-      <div class="search-results"></div>
-    </section>
-    <div id="cart" class="cart-hidden">
-      <div class="cart-row">
-        <h2 style="text-align: center">Your Cart</h2>
-        <i
-          class="fa fa-close icon__item"
-          id="cart-button"
-          onclick="toggleCart()"
-        ></i>
-      </div>
-      <!-- Cart section -->
-      <ul id="cart-items"></ul>
-      <h3 style="margin: auto; padding: 10px 0px" id="cart-total">Total: $0</h3>
-      <button id="clear-cart" onclick="clearCart()">Clear Cart</button>
-    </div>
-    <!-- Footer section -->
-    <footer class="section-p1">
-      <div class="col">
-        <img class="logo" src="../images/logo.png" alt="" />
-        <h4>Contact</h4>
-        <p><strong>Address:</strong>Village Dighpur near Gidr banglow Ghotki</p>
-        <p><strong>Mobile:</strong>0307 3591744</p>
-        <p><strong>Hours:</strong>10:00 - 18:00, Man - Sat</p>
-        <div class="follow">
-          <h4>Follow Us</h4>
-          <div class="icon">
-            <i class="fa fa-facebook"></i>
-            <i class="fa fa-twitter"></i>
-            <i class="fa fa-instagram"></i>
-            <i class="fa fa-pinterest"></i>
-            <i class="fa fa-youtube"></i>
-          </div>
-        </div>
-      </div>
-
-      <div class="col">
-        <h4>About Us</h4>
-        <a href="#abc">About us</a>
-        <a href="#abc">Delievery Information</a>
-        <a href="#abc">Privacy Policy</a>
-        <a href="#abc">Terms & Conditions</a>
-        <a href="#abc">Contact us</a>
-      </div>
-
-      <div class="col">
-        <h4>My Account</h4>
-        <a href="#abc">Sign In</a>
-        <a href="#abc">View Cart</a>
-        <a href="#abc">My Wishlist</a>
-        <a href="#abc">Track My Order</a>
-        <a href="#abc">Help</a>
-      </div>
-      <div class="col install">
-        <h4>Install App</h4>
-        <p>From PlayStore or Google Playstore</p>
-        <div class="row">
-          <img src="../images/pay/app.jpg" alt="" />
-          <img src="../images/pay/play.jpg" alt="" />
-        </div>
-        <p>Secured and Protected. State Bank Authorized</p>
-        <img src="../images/pay/pay.png" alt="" />
-      </div>
-      <div class="copyright">
-        <p>@ducsabrine, From CNAM</p>
-      </div>
-    </footer>
-
-    <script src="../js/script.js"></script>
-    <!-- <script src="script.js"></script> -->
-  </body>
+<!DOCTYPE html><!-- Précise le language utilisé -->
+<html lang="fr"><!-- Précise la langue utilisée -->
+    <head>
+        <meta charset="utf-8" /><!-- Précise l'encodage des caractères -->
+        <!-- Indique comment le navigateur doit afficher la page sur différents appareils mobiles -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Booki - Votre hébergement pour les vacances !</title>
+        <!-- Appel pour les feuilles de style -->
+        <link rel="stylesheet" href="./css/normalize.css" />
+        <link rel="stylesheet" href="./css/style.css" />
+        <!-- Appel pour les icônes du site -->
+        <script src="https://kit.fontawesome.com/70f41f18b3.js" crossorigin="anonymous"></script> 
+        <!-- Appel pour la police du site : Raleway -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <!--Entête de la page-->
+        <header>
+            <!--Insertion d'un logo cliquable-->
+            <div class="logo">
+                <a href="index.html"><img id="logo" src="./images/logo/Booki@3x.png" alt="Booki - Votre hébergement pour les vacances !" title="Booki - Votre hébergement pour les vacances !"></a>
+            </div>
+            <!--Mise en place d'un menu de navigation-->
+            <nav>
+               <ul class="menu">
+                    <li class="hebergements">
+                        <a href="#hebergements_pop">Hébergements</a>
+                    </li>
+                    <li class="activites">
+                        <a href="#activites_ville">Activités</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <!--Corps de la page-->
+        <main>
+            <!--Partie Recherche-->
+            <section id="recherche">
+                <div id="identite_du_site">
+                    <h1>Trouvez votre hébergement pour des vacances de rêve</h1>
+                    <p>En plein centre ville ou en pleine nature</p>
+                </div>
+                <div id="zone_recherche">
+                    <form method="post" action="#" id="formulaire">
+                        <i class="fa-solid fa-location-dot"></i> 
+                        <input type="text" name="localisation" placeholder="Marseille, France" />
+                        <button type="button" class="bouton_rechercher_desktop_tablette">Rechercher</button>
+                        <button type="button" class="bouton_rechercher_mobile"><i class="fa-solid fa-magnifying-glass loupe"></i></button>
+                    </form>
+                </div>
+            </section>
+            <!--Partie Filtres-->
+            <div id="filtres_info">
+                <div id="filtres">
+                    <div id="titre_filtres">Filtres</div>
+                    <div id="filtres_categories">
+                        <div class="aspect_filtres">
+                            <i class="fa-solid fa-money-bill-wave icone_filtres"></i>
+                            <p id="filtre_eco">&Eacute;conomique</p>
+                        </div>
+                        <div class="aspect_filtres">
+                            <i class="fa-solid fa-child-reaching icone_filtres"></i>
+                            <p id="filtre_famille">Familial</p>
+                        </div>
+                        <div class="aspect_filtres">
+                            <i class="fa-solid fa-heart icone_filtres"></i>
+                            <p id="filtre_romantique">Romantique</p>
+                        </div>
+                        <div class="aspect_filtres">
+                            <i class="fa-solid fa-dog icone_filtres"></i>
+                            <p id="filtre_animaux">Animaux autorisés</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="info">
+                    <i class="fa-solid fa-info"></i>
+                    <p id="texte_info">Plus de 500 logements sont disponibles dans cette ville</p>
+                </div>
+            </div>
+            <!--Partie hébergements et populaires-->
+            <section id="hebergements_pop">
+                <!--Partie hébergements-->
+                <div id="hebergements">
+                    <div id="titre_hebergements_ville">
+                        <h2>Hébergements à Marseille</h2>
+                    </div>
+                    <div id="resultats_hebergements">
+                        <div class="choix_hebergements">
+                            <a href="#">
+                                <img class="hebergements_image" src="./images/hebergements/auberge_la_cannebiere.jpg" alt="Booki - Auberge La Cannebière à Marseille" title="Booki - Auberge La Cannebière à Marseille">
+                            </a> 
+                                <div class="titre_prix_etoiles_hebergements">
+                                    <div class="titre_hebergements">Auberge La Cannebière</div>
+                                    <div class="prix_hebergements">Nuit à partir de <p class="bold">25€</p></div>
+                                    <div class="etoiles_hebergements">
+                                        <i class="fa-solid fa-star etoiles_bleues"></i>
+                                        <i class="fa-solid fa-star etoiles_bleues"></i>
+                                        <i class="fa-solid fa-star etoiles_bleues"></i>
+                                        <i class="fa-solid fa-star etoiles_bleues"></i>
+                                        <i class="fa-solid fa-star etoiles_grises"></i>
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="choix_hebergements">
+                            <a href="#">
+                                <img class="hebergements_image" src="./images/hebergements/hotel_du_port.jpg" alt="Booki - Hotel du port à Marseille" title="Booki - Hotel du port à Marseille">
+                            </a>
+                            <div class="titre_prix_etoiles_hebergements">
+                                <div class="titre_hebergements">Hôtel du port</div>
+                                <div class="prix_hebergements">Nuit à partir de 52<p class="bold">€</p></div>
+                                <div class="etoiles_hebergements">
+                                    <i class="fa-solid fa-star etoiles_bleues"></i>
+                                    <i class="fa-solid fa-star etoiles_bleues"></i>
+                                    <i class="fa-solid fa-star etoiles_bleues"></i>
+                                    <i class="fa-solid fa-star etoiles_bleues"></i>
+                                    <i class="fa-solid fa-star etoiles_bleues"></i>
+                                </div>
+                            </div>    
+                        </div>
+                        <div class="choix_hebergements">
+                            <a href="#">
+                                <img class="hebergements_image" src="./images/hebergements/hotel_les_mouettes.jpg" alt="Booki - Hotel Les mouettes à Marseille" title="Booki - Hotel Les mouettes à Marseille">
+                            </a>
+                                <div class="titre_prix_etoiles_hebergements">
+                                <div class="titre_hebergements">Hôtel Les mouettes</div>
+                                <div class="prix_hebergements">Nuit à partir de 76<p class="bold">€</p></div>
+                                <div class="etoiles_hebergements">
+                                    <i class="fa-solid fa-star etoiles_bleues"></i>
+                                    <i class="fa-solid fa-star etoiles_bleues"></i>
+                                    <i class="fa-solid fa-star etoiles_bleues"></i>
+                                    <i class="fa-solid fa-star etoiles_bleues"></i>
+                                    <i class="fa-solid fa-star etoiles_grises"></i>
+                                </div>
+                            </div>    
+                        </div>
+                        <div class="choix_hebergements">
+                            <a href="#">
+                                <img class="hebergements_image" src="./images/hebergements/hotel_de_la_mer.jpg" alt="Booki - Hotel de la mer à Marseille" title="Booki - Hotel de la mer à Marseille">
+                            </a>
+                            <div class="titre_prix_etoiles_hebergements">
+                                <div class="titre_hebergements">Hôtel de la mer</div>
+                                <div class="prix_hebergements">Nuit à partir de 46<p class="bold">€</p></div>
+                                <div class="etoiles_hebergements">
+                                    <i class="fa-solid fa-star etoiles_bleues"></i>
+                                    <i class="fa-solid fa-star etoiles_bleues"></i>
+                                    <i class="fa-solid fa-star etoiles_bleues"></i>
+                                    <i class="fa-solid fa-star etoiles_grises"></i>
+                                    <i class="fa-solid fa-star etoiles_grises"></i>
+                                </div>
+                            </div>    
+                        </div>
+                        <div class="choix_hebergements">
+                            <a href="#">
+                                <img class="hebergements_image" src="./images/hebergements/auberge_le_panier.jpg" alt="Booki - Auberge Le Panier à Marseille" title="Booki - Auberge Le Panier à Marseille">
+                            </a>
+                            <div class="titre_prix_etoiles_hebergements">
+                                <div class="titre_hebergements">Auberge Le Panier</div>
+                                <div class="prix_hebergements">Nuit à partir de <p class="bold">23€</p></div>
+                                <div class="etoiles_hebergements">
+                                    <i class="fa-solid fa-star etoiles_bleues"></i>
+                                    <i class="fa-solid fa-star etoiles_bleues"></i>
+                                    <i class="fa-solid fa-star etoiles_bleues"></i>
+                                    <i class="fa-solid fa-star etoiles_bleues"></i>
+                                    <i class="fa-solid fa-star etoiles_grises"></i>
+                                </div>
+                            </div>    
+                        </div>
+                        <div class="choix_hebergements">
+                            <a href="#">
+                                <img class="hebergements_image" src="./images/hebergements/hotel_chez_amina.jpg" alt="Booki - Hotel chez Amina à Marseille" title="Booki - Hotel chez Amina à Marseille">
+                            </a>
+                            <div class="titre_prix_etoiles_hebergements">
+                                <div class="titre_hebergements">Hôtel chez Amina</div>
+                                <div class="prix_hebergements">Nuit à partir de 96<p class="bold">€</p></div>
+                                <div class="etoiles_hebergements">
+                                    <i class="fa-solid fa-star etoiles_bleues"></i>
+                                    <i class="fa-solid fa-star etoiles_bleues"></i>
+                                    <i class="fa-solid fa-star etoiles_bleues"></i>
+                                    <i class="fa-solid fa-star etoiles_bleues"></i>
+                                    <i class="fa-solid fa-star etoiles_bleues"></i>
+                                </div>
+                            </div>    
+                        </div>
+                    </div>
+                    <div id="afficher_plus"><a href="#">Afficher plus</a></div>
+                </div>
+                <!--Partie Les plus populaires-->
+                <div id="les_plus_populaires">
+                    <div id="titre_les_plus_populaires">
+                        <h2>Les plus populaires</h2>
+                        <i class="fa-solid fa-star etoile_noire"></i>
+                    </div>
+                    <div id="resultats_les_plus_populaires">
+                        <div class="selection_les_plus_populaires">
+                            <a href="#">
+                                <img class="populaires_image" src="./images/hebergements/hotel_le_soleil_du_matin.jpg" alt="Booki - Hôtel Le soleil du matin à Marseille" title="Booki - Hôtel Le soleil du matin à Marseille">
+                            </a>
+                            <div class="titre_prix_etoiles_selection_populaires">
+                                <div class="titre_selection_populaires">Hôtel Le soleil du matin</div>
+                                <div class="prix_selection_populaires">Nuit à partir de 128<p class="bold">€</p></div>
+                                <div class="etoiles_populaires">
+                                    <i class="fa-solid fa-star etoiles_bleues"></i>
+                                    <i class="fa-solid fa-star etoiles_bleues"></i>
+                                    <i class="fa-solid fa-star etoiles_bleues"></i>
+                                    <i class="fa-solid fa-star etoiles_bleues"></i>
+                                    <i class="fa-solid fa-star etoiles_bleues"></i>
+                                </div>
+                            </div>
+                        </div>   
+                        <div class="selection_les_plus_populaires">
+                            <a href="#">
+                                <img class="populaires_image" src="./images/hebergements/au_coeur_de_leau.jpg" alt="Booki - Au c&oelig;ur de l'eau Chambre d'hôtes à Marseille" title="Booki - Au c&oelig;ur de l'eau Chambre d'hôtes à Marseille">
+                            </a>
+                            <div class="titre_prix_etoiles_selection_populaires">
+                                <div class="titre_selection_populaires">Au c&oelig;ur de l'eau Chambre d'hôtes</div>
+                                <div class="prix_selection_populaires">Nuit à partir de 71<p class="bold">€</p></div>
+                                <div class="etoiles_populaires">
+                                    <i class="fa-solid fa-star etoiles_bleues"></i>
+                                    <i class="fa-solid fa-star etoiles_bleues"></i>
+                                    <i class="fa-solid fa-star etoiles_bleues"></i>
+                                    <i class="fa-solid fa-star etoiles_bleues"></i>
+                                    <i class="fa-solid fa-star etoiles_grises"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="selection_les_plus_populaires">
+                            <a href="#">
+                                <img class="populaires_image" src="./images/hebergements/hotel_tout_bleu_blanc.jpg" alt="Booki - Hôtel Tout bleu et Blanc à Marseille" title="Booki - Hôtel Tout bleu et Blanc à Marseille">
+                            </a>
+                            <div class="titre_prix_etoiles_selection_populaires">
+                                <div class="titre_selection_populaires">Hôtel Tout bleu et Blanc</div>
+                                <div class="prix_selection_populaires">Nuit à partir de 68<p class="bold">€</p></div>
+                                <div class="etoiles_populaires">
+                                    <i class="fa-solid fa-star etoiles_bleues"></i>
+                                    <i class="fa-solid fa-star etoiles_bleues"></i>
+                                    <i class="fa-solid fa-star etoiles_bleues"></i>
+                                    <i class="fa-solid fa-star etoiles_bleues"></i>
+                                    <i class="fa-solid fa-star etoiles_grises"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Partie Activités -->
+            <section id="activites_ville">
+                <div id="titre_activites_ville">
+                    <h2>Activités à Marseille</h2>
+                </div>
+                <div id="selection_activites">
+                    <div class="tous_les_elements" id="element_1">
+                        <a href="#">
+                            <img class="activite_image" src="./images/activites/vieux_port.jpg" alt="Booki - Vieux Port à Marseille" title="Booki - Vieux Port à Marseille">
+                        </a>
+                        <div class="titre_selection_activite" id="titre_element_1">Vieux Port</div>
+                    </div>
+                    <div id="elements_2_et_3">
+                        <div class="tous_les_elements" id="element_2">
+                            <a href="#">
+                                <img class="activite_image" src="./images/activites/fort_de_pomegues.jpg" alt="Booki - Fort de Pomègues à Marseille" title="Booki - Fort de Pomègues à Marseille">
+                            </a>
+                            <div class="titre_selection_activite" id="titre_element_2">Fort de Pomègues</div>
+                        </div>
+                        <div class="tous_les_elements" id="element_3">
+                            <a href="#">
+                                <img class="activite_image" src="./images/activites/iles_du_frioul.jpg" alt="Booki - &#206;les du Frioul à Marseille" title="Booki - &#206;les du Frioul à Marseille">
+                            </a>
+                            <div class="titre_selection_activite" id="titre_element_3">&#206;les du Frioul</div>
+                        </div>
+                    </div>
+                    <div class="tous_les_elements" id="element_4">
+                        <a href="#">
+                            <img class="activite_image" src="./images/activites/parc_national_des_calanques.jpg" alt="Booki - Parc National des Calanques à Marseille" title="Booki - Parc National des Calanques à Marseille">
+                        </a>
+                        <div class="titre_selection_activite" id="titre_element_4">Parc National des Calanques</div>
+                    </div>
+                    <div id="elements_5_et_6">
+                        <div class="tous_les_elements" id="element_5">
+                            <a href="#">
+                                <img class="activite_image" src="./images/activites/notre_dame_de_la_garde.jpg" alt="Booki - Notre-Dame-de-la-Garde à Marseille" title="Booki - Notre-Dame-de-la-Garde à Marseille">
+                            </a>
+                            <div class="titre_selection_activite" id="titre_element_5">Notre-Dame-de-la-Garde</div>
+                        </div>
+                        <div class="tous_les_elements" id="element_6">
+                            <a href="#">
+                                <img class="activite_image" src="./images/activites/parc_longchamp.jpg" alt="Booki - Parc Longchamp à Marseille" title="Booki - Parc Longchamp à Marseille">
+                            </a>
+                            <div class="titre_selection_activite" id="titre_element_6">Parc Longchamp</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main> 
+        <!--Pied de page--> 
+        <footer>
+            <section class="footer_colonne">
+                <div>
+                    <h3>A propos</h3> 
+                </div>
+                <div>
+                    <ul>
+                        <li class="liens_footer">
+                            <a href="#">Fonctionnement du site</a>
+                        </li>
+                        <li class="liens_footer">
+                            <a href="#">Conditions générales de vente</a>
+                        </li>
+                        <li class="liens_footer">
+                            <a href="#">Données et confidentialité</a>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <section class="footer_colonne">
+                <div>
+                    <h3>Nos hébergements</h3> 
+                </div>
+                <div>
+                    <ul>
+                        <li class="liens_footer">
+                            <a href="#">Charte qualité</a>
+                        </li>
+                        <li class="liens_footer">
+                            <a href="#">Soumettre votre hôtel</a>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <section class="footer_colonne">
+                <div>
+                    <h3>Assistance</h3> 
+                </div>
+                <div>
+                    <ul>
+                        <li class="liens_footer">
+                            <a href="#">Centre d'aide</a>
+                        </li>
+                        <li class="liens_footer">
+                            <a href="#">Nous contacter</a>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </footer>
+    </body>
 </html>
