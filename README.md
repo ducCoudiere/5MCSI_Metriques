@@ -3,7 +3,7 @@
 It is clone of Astore Ecommerce website with all basic functionalities of Ecommerce website.
 
 ## Technologies Used
-
+ 
 - HTML
 - CSS
 - JavaScript
